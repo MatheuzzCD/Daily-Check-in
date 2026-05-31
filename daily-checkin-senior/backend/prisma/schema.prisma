@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String
+  passwordHash  String
+  role          String    // "RESPONDENTE" ou "CUIDADOR"
+  phone         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  respondentProfile  Respondent?
+  caregiverProfile   Caregiver?
+  sentRequests       LinkRequest[] @relation("Sender")
+  receivedRequests   LinkRequest[] @relation("Receiver")
+  checkins           Checkin[]
+  settings           Settings?
+}
+
+model Respondent {
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id])
+  caregivers    CaregiverLink[]
+  pendingFrom   LinkRequest[] @relation("PendingReceiver")
+
+  @@map("respondents")
+}
+
+model Caregiver {
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id])
+  respondents   CaregiverLink[]
+
+  @@map("caregivers")
+}
+
+model CaregiverLink {
+  id             String   @id @default(cuid())
+  caregiverId    String
+  respondentId   String
+  status         String   // "PENDING", "ACTIVE", "REJECTED"
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  caregiver      Caregiver @relation(fields: [caregiverId], references: [userId])
+  respondent     Respondent @relation(fields: [respondentId], references: [userId])
+
+  @@map("caregiver_links")
+}
+
+model LinkRequest {
+  id             String   @id @default(cuid())
+  senderId       String
+  receiverId     String
+  status         String   // "PENDING", "ACCEPTED", "REJECTED"
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  sender         User @relation("Sender", fields: [senderId], references: [id])
+  receiver       User @relation("Receiver", fields: [receiverId], references: [id])
+  pendingReceiver Respondent? @relation("PendingReceiver", fields: [receiverId], references: [userId])
+
+  @@map("link_requests")
+}
+
+model Checkin {
+  id            String    @id @default(cuid())
+  respondentId  String
+  date          DateTime
+  checkedAt     DateTime?
+  status        String    // "PENDING", "CONFIRMED", "DELAYED", "MISSED"
+  createdAt     DateTime  @default(now())
+
+  respondent    User      @relation(fields: [respondentId], references: [id])
+
+  @@map("checkins")
+}
+
+model Settings {
+  id                         String   @id @default(cuid())
+  respondentId               String   @unique
+  regularDeadlineHour        Int      @default(10)
+  regularDeadlineMinute      Int      @default(0)
+  secondaryCallEnabled       Boolean  @default(true)
+  secondaryCallDelayMinutes  Int      @default(20)
+
+  respondent                 User     @relation(fields: [respondentId], references: [id])
+
+  @@map("settings")
+}
+
+model NotificationLog {
+  id          String   @id @default(cuid())
+  caregiverId String
+  respondentId String
+  type        String
+  channel     String
+  sentAt      DateTime @default(now())
+  success     Boolean
+  errorMsg    String?
+
+  @@map("notification_logs")
+}

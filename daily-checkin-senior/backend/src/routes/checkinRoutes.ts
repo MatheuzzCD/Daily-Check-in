@@ -1,0 +1,1 @@
+import { Router } from 'express'; import { createCheckin, getTodayStatus } from '../controllers/checkinController'; import { authMiddleware } from '../middleware/auth'; const router = Router(); router.post('/', authMiddleware, createCheckin); router.get('/today', authMiddleware, getTodayStatus); export default router;

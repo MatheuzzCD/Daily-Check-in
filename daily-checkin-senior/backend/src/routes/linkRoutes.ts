@@ -1,0 +1,1 @@
+import { Router } from 'express'; import { requestLink, acceptLink } from '../controllers/linkController'; import { authMiddleware } from '../middleware/auth'; const router = Router(); router.post('/request', authMiddleware, requestLink); router.post('/accept', authMiddleware, acceptLink); export default router;
