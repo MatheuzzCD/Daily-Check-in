@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.5 on win32)" generated="2026-06-01T04:18:15.283103" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Home" source="C:\Users\luis felipe\Downloads\login_home.robot">
+<kw name="Open Browser" owner="SeleniumLibrary" type="SETUP">
+<msg time="2026-06-01T04:18:16.285691" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173/login'.</msg>
+<arg>http://localhost:5173/login</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-01T04:18:16.285129" elapsed="4.393063"/>
+</kw>
+<test id="s1-t1" name="CT01 - Login valido deve redirecionar para Home e exibir titulo" line="15">
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-01T04:18:20.682713" elapsed="0.082011"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-01T04:18:20.767737" level="INFO">Typing text 'idoso@teste.com' into text field 'css=input[type='email']'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>idoso@teste.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-01T04:18:20.766137" elapsed="0.360454"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-01T04:18:21.128489" level="INFO">Typing password into text field 'css=input[type='password']'.</msg>
+<msg time="2026-06-01T04:18:21.216805" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>123456</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-01T04:18:21.127429" elapsed="0.191517"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-01T04:18:21.320885" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<arg>${BTN_ENTRAR}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-01T04:18:21.320083" elapsed="0.163331"/>
+</kw>
+<kw name="Wait Until Location Is" owner="SeleniumLibrary">
+<arg>${URL_HOME}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the current URL is ``expected``.</doc>
+<status status="PASS" start="2026-06-01T04:18:21.484198" elapsed="0.244090"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TITULO}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-01T04:18:21.729252" elapsed="0.069596"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-06-01T04:18:21.856262" level="INFO">Element 'xpath=//h1[contains(text(),'Daily Check-in')]' is displayed.</msg>
+<arg>${TITULO}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-01T04:18:21.799709" elapsed="0.056776"/>
+</kw>
+<status status="PASS" start="2026-06-01T04:18:20.679549" elapsed="1.177736"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-01T04:18:21.859712" elapsed="2.727710"/>
+</kw>
+<status status="PASS" start="2026-06-01T04:18:15.287942" elapsed="9.299682"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login Home" id="s1" pass="1" fail="0" skip="0">Login Home</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
