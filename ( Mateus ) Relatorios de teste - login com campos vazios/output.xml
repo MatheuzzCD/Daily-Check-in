@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.9.9 on darwin)" generated="2026-06-03T20:53:49.775306" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Campos Vazios" source="/Users/gabriel/Downloads/Daily-Check-in-main/daily-checkin-senior/tests/gabriel/login_campos_vazios.robot">
+<kw name="Open Browser" owner="SeleniumLibrary" type="SETUP">
+<msg time="2026-06-03T20:53:49.972557" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173/login'.</msg>
+<arg>http://localhost:5173/login</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-03T20:53:49.972285" elapsed="1.238160"/>
+</kw>
+<test id="s1-t1" name="CT01 - Login com ambos os campos vazios nao deve submeter o formulario" line="14">
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.212003" elapsed="0.375455"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.587717" elapsed="0.036866"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_SENHA}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.624802" elapsed="0.021639"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:51.646987" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<arg>${BTN_ENTRAR}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.646679" elapsed="0.066748"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:51.721158" level="INFO">Current page contains element 'css=input[type='email']'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.713700" elapsed="0.007579"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:51.736584" level="INFO">Current location is 'http://localhost:5173/login'.</msg>
+<arg>${URL_LOGIN}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.721618" elapsed="0.015153"/>
+</kw>
+<status status="PASS" start="2026-06-03T20:53:51.211051" elapsed="0.526215"/>
+</test>
+<test id="s1-t2" name="CT02 - Login apenas com email preenchido nao deve submeter o formulario" line="22">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.738486" elapsed="0.051173"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:51.790467" level="INFO">Typing text 'idoso@teste.com' into text field 'css=input[type='email']'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>idoso@teste.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.789919" elapsed="0.154754"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_SENHA}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.945019" elapsed="0.048643"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:51.994222" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<arg>${BTN_ENTRAR}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:51.993914" elapsed="0.064977"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:52.067118" level="INFO">Current page contains element 'css=input[type='email']'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.059589" elapsed="0.007659"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:52.072318" level="INFO">Current location is 'http://localhost:5173/login'.</msg>
+<arg>${URL_LOGIN}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.068286" elapsed="0.004161"/>
+</kw>
+<status status="PASS" start="2026-06-03T20:53:51.737922" elapsed="0.334733"/>
+</test>
+<test id="s1-t3" name="CT03 - Login apenas com senha preenchida nao deve submeter o formulario" line="30">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.073495" elapsed="0.054925"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.128700" elapsed="0.035154"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:52.164451" level="INFO">Typing password into text field 'css=input[type='password']'.</msg>
+<msg time="2026-06-03T20:53:52.187893" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>123456</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.164096" elapsed="0.056616"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:52.221371" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<arg>${BTN_ENTRAR}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.221048" elapsed="0.050259"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:52.277197" level="INFO">Current page contains element 'css=input[type='email']'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.271530" elapsed="0.005789"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:52.280518" level="INFO">Current location is 'http://localhost:5173/login'.</msg>
+<arg>${URL_LOGIN}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.277523" elapsed="0.003120"/>
+</kw>
+<status status="PASS" start="2026-06-03T20:53:52.072945" elapsed="0.207892"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-03T20:53:52.281477" elapsed="0.143824"/>
+</kw>
+<status status="PASS" start="2026-06-03T20:53:49.776537" elapsed="2.648945"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login Campos Vazios" id="s1" pass="3" fail="0" skip="0">Login Campos Vazios</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

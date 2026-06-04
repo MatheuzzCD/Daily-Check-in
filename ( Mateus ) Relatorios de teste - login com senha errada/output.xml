@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.9.9 on darwin)" generated="2026-06-03T20:53:43.167892" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Senha Errada" source="/Users/gabriel/Downloads/Daily-Check-in-main/daily-checkin-senior/tests/gabriel/login_senha_errada.robot">
+<kw name="Open Browser" owner="SeleniumLibrary" type="SETUP">
+<msg time="2026-06-03T20:53:43.423278" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173/login'.</msg>
+<arg>http://localhost:5173/login</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-03T20:53:43.423030" elapsed="1.253956"/>
+</kw>
+<test id="s1-t1" name="CT01 - Login com senha errada deve exibir mensagem de erro" line="15">
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-03T20:53:44.696517" elapsed="0.466502"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:45.163962" level="INFO">Typing text 'idoso@teste.com' into text field 'css=input[type='email']'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>idoso@teste.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:45.163328" elapsed="0.148646"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:45.312499" level="INFO">Typing password into text field 'css=input[type='password']'.</msg>
+<msg time="2026-06-03T20:53:45.344998" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>senhaerrada</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:45.312199" elapsed="0.077546"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:45.390285" level="INFO">Clicking button 'css=button[type='submit']'.</msg>
+<arg>${BTN_ENTRAR}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T20:53:45.389990" elapsed="0.056810"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${MSG_ERRO}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-03T20:53:45.447065" elapsed="0.222854"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-06-03T20:53:45.687891" level="INFO">Element 'xpath=//*[@role='status' and contains(., 'Credenciais inválidas')]' is displayed.</msg>
+<arg>${MSG_ERRO}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T20:53:45.670248" elapsed="0.017783"/>
+</kw>
+<status status="PASS" start="2026-06-03T20:53:44.692322" elapsed="0.995930"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-03T20:53:45.689135" elapsed="0.102252"/>
+</kw>
+<status status="PASS" start="2026-06-03T20:53:43.169577" elapsed="2.622219"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login Senha Errada" id="s1" pass="1" fail="0" skip="0">Login Senha Errada</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
